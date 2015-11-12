@@ -201,7 +201,7 @@ html.js .jshidden {
 #menu .menu {
     display:none;
 }
-.clear {
+.clear, .clb {
     clear: both;
 }
 /* ------- Rojovy styly ---------- */
@@ -220,6 +220,23 @@ html.js .jshidden {
 .cll {clear:left;}
 
 abbr, acronym {cursor: help;}
+em.fix {background-color:#efb, color:#000;}
+span.ex {font-weight:bold; color:#a00;}
+
+/* --tabulka -- */
+th {text-align:left}
+td, th {vertical-align:top;}
+tr.ep {margin-top:8px;}
+tr.ep td, tr.ep th {border-top:#ccc 3px solid; margin-top:8px;}
+
+/* --- paticka clanku --- */
+a.zdroj {font-size:60%; position:relative; top:-6px; text-decoration:none; color:#02c;}
+div.zdroje {font-size:70%; color:#050; background:#efe; padding:8px;}
+div.zdroje p {margin:4px 0;}
+
+div.autor {background-color:#ffd; padding: 5px; font-size:90%}
+p.rtext, div.rtext {text-align:right;}
+
 /* --- tutorialy ------ */
  .citemenu {font-style: italic; color:#420;}
  .citename {font-style: italic; color:#403;}
