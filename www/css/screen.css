@@ -1,0 +1,245 @@
+#header {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    border-bottom: 20px solid black;
+}
+#main {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.menu_item {
+    width:143px;
+    float:left;
+    height: 100%;
+}
+.menu_archiv {
+    width:142px;
+    float:left;
+    height: 100%;
+}
+
+
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+#logo {
+    position: absolute;
+    padding:13px;
+
+}
+
+#left_column {
+    width: 660px;
+    float: left;
+}
+#content {
+
+}
+#right_column {
+    width: 334px;
+   float: right;
+    position: relative;
+}
+.clanek {
+    line-height: 21px;
+    margin-right: 66px;
+
+}
+.clanek_obrazek {
+    width: 200px;
+    float: left;
+    /*border: 1px solid black;*/
+    border: 0px;
+    min-height: 100px;
+}
+.hlavni_clanek_obrazek {
+    width: 500px;
+    float: left;
+    /*border: 1px solid black;*/
+    border: 0px;
+    min-height: 100px;
+}
+.clanek_obrazek a {
+    line-height: 0px;
+    display:block;
+}
+.clanek_nahled {
+    width: 400px;
+    margin-left: 30px;
+    float: left;
+}
+.hlavni_clanek_nahled {
+    width:468px;
+    margin-left: 20px;
+}
+
+.kategorie_mala {
+    font-size: 12px;
+    line-height: 80%;
+    font-weight: bold;
+}
+
+
+
+.nacist {
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+.nacist:hover {
+    text-decoration: underline;
+}
+
+img.hlavni {
+    margin-bottom: 30px;
+}
+
+#frm-komentar-prazdne, label[for=frm-komentar-prazdne] {
+    display: none;
+}
+
+#frm-komentar input[type=text], #frm-komentar textarea {
+    width: 300px;
+}
+#frm-komentar textarea {
+    height: 100px;
+}
+
+.komentar_header {
+    background-color: #dddddd;
+    padding: 10px;
+    margin-top: 25px;
+}
+a.podpora {
+    font-size:42px;
+    color:white;
+    font-weight: bold;
+    text-decoration: none;
+    background-image: url('../images/podpora.png');
+    width: 334px;
+    height: 150px;
+    display: block;
+    line-height: 150px;
+    text-align: center;
+}
+.aktuality {
+    background-color: #fff5a0;
+    padding: 20px;
+    /*margin-top: 20px;*/
+    margin-bottom: 20px;
+
+}
+.pozvanky {
+    background-color: #bad966;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.anketa {
+    background-color: #bdeaff;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#fb, .twitter-timeline {
+    margin-top: 20px;
+}
+#right_column h2 {
+    color: #3e322e;
+    margin: 0px;
+}
+
+
+.fb-like-top {
+    float: left;
+    margin-right:5px;
+}
+.share {
+    margin-top:10px;
+}
+.stitky a {
+    text-decoration: none;
+}
+.stitky a:hover {
+    text-decoration: underline;
+}
+#icons {
+    position: absolute;
+    right:-50px;
+    width:40px;
+}
+#icons a {
+    line-height: 38px;
+}
+#paticka {
+    background-color: #005378;
+    color: #478ec7;
+    padding-left: 27px;
+    padding-top: 83px;
+    padding-bottom: 17px;
+    font-size: 14px;
+}
+
+#paticka a {
+    color: #478ec7;
+    text-decoration: none;
+}
+#paticka a:hover {
+    text-decoration: underline;
+}
+#paticka p {
+    font-size: 12px;
+}
+#frm-hledani {
+    position: absolute;
+    top:45px;
+    right: 0px;
+    background-image: url('../images/icons/search.png');
+    background-position: center left;
+    background-repeat: no-repeat;
+    height: 20px;
+    padding-left: 25px;
+
+}
+
+#frm-hledani input {
+    background-color: #87c16a;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    height: 20px;
+    width: 165px;
+
+}
+
+table.admin tr:hover td {
+    background-color: #dddddd;
+}
+.menu {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 40px;
+}
+#menu_button {
+    display: none;
+}
+
+#menu {
+    display:none;
+}
+
+.menu2 {
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+#main_article {
+    margin-bottom:40px;
+}

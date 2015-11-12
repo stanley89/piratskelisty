@@ -1,0 +1,206 @@
+body {
+    margin: 0px;
+    font-size: 15px;
+    color: #000000;
+    background: white;
+    font-family: Arial;
+}
+a {
+    color: black;
+    text-decoration: underline;
+}
+p {
+    margin: 14px 0px;
+}
+h1 {
+    margin-top: 0px;
+    color: #bbbbbb;
+}
+.clanek h1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 30px;
+    color: black;
+}
+.aktuality h2 a {
+    text-decoration: none;
+}
+.aktuality h2 a:hover {
+    text-decoration: underline;
+}
+#ajax-spinner {
+    margin: 15px 0 0 15px;
+    padding: 13px;
+    background: white url('../images/spinner.gif') no-repeat 50% 50%;
+    font-size: 0;
+    z-index: 123456;
+    display: none;
+}
+
+div.flash {
+    color: black;
+    background: #FFF9D7;
+    border: 1px solid #E2C822;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+a[href^="error:"] {
+    background: red;
+    color: white;
+}
+
+form th, form td {
+    vertical-align: top;
+    font-weight: normal;
+}
+
+form th {
+    text-align: right;
+}
+
+form .required label {
+    font-weight: bold;
+}
+
+form .error {
+    color: #D00;
+    font-weight: bold;
+}
+
+html.js .jshidden {
+    display: none;
+}
+
+.datum_diskuze {
+    font-size:12px;
+    color: #bbbbbb;
+    margin-top:2px;
+}
+.datum_diskuze a {
+    color: #bbbbbb;
+    text-decoration: none;
+}
+.datum_diskuze a:hover {
+    text-decoration: underline;
+}
+
+#header a {
+    color: black;
+}
+#header .redakce {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin:5px;
+}
+
+.bg1 {
+    background-color: #bfd16e;
+}
+.bg2 {
+    background-color: #98bf70;
+}
+.bg3 {
+    background-color: #6eaf6f;
+}
+.bg4 {
+    background-color: #6bb3b0;
+}
+.bg5 {
+    background-color: #64b7eb;
+}
+.bg6 {
+    background-color: #638bc8;
+}
+.bg7 {
+    background-color: #6271b2;
+}
+.color1 {
+    color: #bfd16e;
+}
+.color2 {
+    color: #98bf70;
+}
+.color3 {
+    color: #6eaf6f;
+}
+.color4 {
+    color: #6bb3b0;
+}
+.color5 {
+    color: #64b7eb;
+}
+.color6 {
+    color: #638bc8;
+}
+.color7 {
+    color: #6271b2;
+}
+
+.smaller {
+    font-size: 80%;
+}
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+
+.aktuality .datum {
+    font-size: 12px;
+    color: #f28c4d;
+}
+.aktualita {
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.clanek_nahled h2 {
+    line-height: 18px;
+}
+.clanek_nahled h2 a, .clanek_nahled h2 a:visited {
+    color: black;
+    font-size: 18px;
+
+    text-decoration: none;
+}
+.hlavni_clanek_nahled a {
+    text-decoration: none;
+}
+.hlavni_clanek_nahled h1 {
+    margin:0px;
+}
+.clanek_nahled a:hover {
+    text-decoration: underline;
+}
+
+.clanek_nahled h2, .clanek_nahled p {
+    margin:0px;
+}
+.clanek_nahled p, .clanek_obrazek {
+    margin-bottom: 30px;
+}
+.clanek_nahled p {
+    font-size: 16px;
+    line-height: 21px;
+    margin-top: 5px;
+
+
+}
+
+.menu a {
+    color:white;
+    line-height: 50px;
+    text-align:center;
+    text-decoration: none;
+    font-weight: bold;
+    display:block;
+    font-size: 17px;
+}
+#menu .menu {
+    display:none;
+}
+.clear {
+    clear: both;
+}

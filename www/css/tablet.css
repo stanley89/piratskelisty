@@ -1,0 +1,85 @@
+
+body {
+    padding: 10px;
+}
+
+#frm-hledani {
+    display: none;
+}
+
+
+.clanek img  {
+    width: 100%;
+}
+
+#left_column {
+    clear: both;
+}
+#logo {
+    position:absolute;
+}
+#menu_button {
+    float: right;
+}
+
+#header {
+    position:relative;
+    width:100%;
+
+}
+.menu {
+    display:none;
+}
+#menu .menu {
+    position:absolute;
+    top:85px;
+    right:0px;
+    width:100%;
+}
+#menu:hover > .menu {
+    display:block;
+}
+.menu_item {
+    /* width:143px;*/
+    width: 50%;
+    float:left;
+    height: 100%;
+}
+.clanek_nahled {
+    width:70%;
+    float:right;
+}
+.clanek_obrazek {
+    width:25%;
+    float: left;
+    /*border: 1px solid black;*/
+}
+.clanek_obrazek a {
+    line-height: 0px;
+    /*  display:block;*/
+}
+.clanek_obrazek img {
+    width:100%;
+}
+.fb-like-box, .twitter-timeline {
+    display: none;
+}
+#right_column img {
+    max-width:100%;
+}
+#menu a {
+    color:white;
+}
+#menu a:hover {
+    text-decoration: underline;
+}
+#logo {
+    margin-bottom:30px;
+}
+
+#left_column, #right_column {
+    margin-top:30px;
+}
+.hlavni_clanek_nahled img {
+    width: 100%;
+}

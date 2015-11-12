@@ -1,0 +1,19 @@
+#logo img {
+    width:170px;
+}
+#menu img {
+    width:43px;
+}
+#menu .menu {
+    position:absolute;
+    top:42px;
+    right:0px;
+    width:100%;
+}
+.menu_item {
+    /* width:143px;*/
+    width: 100%;
+}
+.clanek_nahled p {
+    display:none;
+}

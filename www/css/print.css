@@ -1,0 +1,20 @@
+body {
+    font: 12pt/1.4 "Arial";
+    color: black;
+    background: none;
+    width: 100%;
+}
+
+a img { border: none; }
+
+#ajax-spinner, #header, #menu, #right_column, #paticka, #icons, #komentare {
+    display: none;
+}
+
+.menu, .kategorie_mala, .share, .stitky, .twitter-share-button {
+    display: none;
+}
+
+#snippet--pridej_komentar, #snippet--komentare, #snippet--hodnoceni {
+    display: none;
+}
