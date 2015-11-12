@@ -204,3 +204,31 @@ html.js .jshidden {
 .clear {
     clear: both;
 }
+/* ------- Rojovy styly ---------- */
+.clanek a,.clanek a:link,.clanek a:visited {color:#00b;}
+.clanek a:hover {color:#aaf;background:#002;}
+.boxr, .boxl {font-size: 90%; background-color:#bcc; padding:12px; width:41%; border-radius:8px;}
+
+.boxr {float:right; clear:right; margin: 10px 0 10px 20px;}
+.boxl {float:left; clear:left; margin: 10px 20px 10px 0px;}
+
+.imgr {float:right; clear:right; margin: 10px 0 10px 20px;}
+.imgl {float:left; clear:left; margin: 10px 20px 10px 0px;}
+
+.boxr h3, .boxl h3  {margin: 0.1em; font-weight: bold; color:#fff;}
+.clr {clear:right;}
+.cll {clear:left;}
+
+abbr, acronym {cursor: help;}
+/* --- tutorialy ------ */
+ .citemenu {font-style: italic; color:#420;}
+ .citename {font-style: italic; color:#403;}
+ .citevalue {font-style: italic; color:#005;}
+ kbd, .hotkey, .kbd {border-top:2px #ffe solid; border-right:2px #bbb solid;
+                   border-bottom:2px #aaa solid; border-left:2px #eed solid;
+                   background: #ddc; padding: 2px 4px 1px; color: #000;}
+ table.dialog  {border: 10px #ddd solid;}
+ table.dialog th {padding: 3px 5px;}
+ table.dialog td {padding: 1px 20px;vertical-align: top;}
+ .rimg {float:right; margin: 10px 0 15px 20px;}
+ code {background: #eec; color:#003; border: 1px #dd8 solid; white-space: pre; padding: 0 5px;}
