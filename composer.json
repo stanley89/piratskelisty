@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nette/nette": "~2",
+        "soundasleep/lightopenid": "^0.1.0"
+    }
+}

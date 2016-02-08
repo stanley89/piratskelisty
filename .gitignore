@@ -1,0 +1,7 @@
+*.bak
+.idea
+temp/*
+log/*
+www/upload/*
+vendor/*
+app/config/config.local.neon

@@ -1,0 +1,39 @@
+{block full}
+<h1>{if empty($clanek)}Nový článek{else}Úprava článku {$clanek->titulek}{/if}</h1>
+{control clanek}
+{/block}
+
+{block scripts}
+<script type="text/javascript" src="{$basePath}/js/ckeditor/ckeditor.js" ></script>
+<script type="text/javascript">
+$(document).ready(function() {
+// This is actually the default value.
+CKEDITOR.config.enterMode = CKEDITOR.ENTER_P;
+
+
+
+CKEDITOR.config.toolbar_Basic =
+[
+    ['Source'],
+    ['Undo','Redo','-','SelectAll','RemoveFormat'],
+    ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+    ['NumberedList','BulletedList'],
+    ['Link','Unlink','Anchor'],
+    [ 'Format'],
+    { name: 'insert',      items : [ 'Image','HorizontalRule','Smiley','SpecialChar' ] },
+
+];
+CKEDITOR.config.forcePasteAsPlainText = true;
+CKEDITOR.config.allowedContent = true;
+
+CKEDITOR.config.entities = false;
+CKEDITOR.config.toolbar = 'Basic';
+CKEDITOR.replace( 'perex',      {   enterMode : CKEDITOR.ENTER_BR } );
+CKEDITOR.replace( 'text',{
+                                 "extraPlugins": "imagebrowser",
+                                 "imageBrowser_listUrl": {link :Service:Images:json}
+                         } );
+
+});
+</script>
+{/block}

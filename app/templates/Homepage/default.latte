@@ -1,0 +1,73 @@
+
+{block hlavni}
+{ifset $clanek}
+
+<div class="prispevek">
+{*if !empty($clanek->obrazek_id)*}
+<div class="clanek_obrazek hlavni_clanek_obrazek">
+<a n:href="Clanek:default $clanek->id, Nette\Utils\Strings::webalize($clanek['titulek'])">
+{if !empty($clanek->obrazek_id)}
+    <img src="{link Service:Thumbnail:default 'id' => $clanek->obrazek_id, 'width' => 500, 'format' => jpg}" alt="{$clanek->alt}" title="{$clanek->titulek}" />
+{/if}
+</a>
+</div>
+{*/if*}
+<div class="clanek_nahled hlavni_clanek_nahled">
+<div class="color{$clanek->kategorie_id} kategorie_mala">{$clanek->kategorie}</div>
+<h1><a n:href="Clanek:default $clanek->id, Nette\Utils\Strings::webalize($clanek['titulek'])">{!$clanek->titulek}</a></h1>
+<div class="datum_diskuze" >{$clanek->datum_vydani|czTextDate}
+| {$clanek->autor}
+ {if !empty($clanek->komentaru)}| <a href="{link Clanek:default $clanek->id, Nette\Utils\Strings::webalize($clanek['titulek'])}#komentare">{!$clanek->komentaru|komentare}</a>{/if}
+ </div>
+<p>{!$clanek->perex|stripTags|truncate:200}</p>
+    <a n:href=":Homepage:podpora" >
+    <img src="{$basePath}/images/podpora_banner.png" alt="Podpořte Pirátské listy" />
+    </a>
+</div>
+</div>
+<div class="clear"></div>
+
+{/ifset}
+
+{/block}
+
+
+{block content}
+{if !empty($h1)}<h1>{$h1}</h1>{/if}
+{snippet clanky}
+{foreach $clanky as $clanek}
+<div class="prispevek">
+{*if !empty($clanek->obrazek_id)*}
+<div class="clanek_obrazek">
+<a n:href="Clanek:default $clanek->id, Nette\Utils\Strings::webalize($clanek['titulek'])">
+{if !empty($clanek->obrazek_id)}
+<img src="{link Service:Thumbnail:default $clanek->obrazek_id, 'width' => 200, 'format' => png}" alt="{$clanek->alt}" title="{$clanek->title}" />
+{/if}
+</a>
+</div>
+{*/if*}
+<div class="clanek_nahled">
+<div class="color{$clanek->kategorie_id} kategorie_mala">{$clanek->kategorie}</div>
+<h2><a n:href="Clanek:default $clanek->id, Nette\Utils\Strings::webalize($clanek['titulek'])">{!$clanek->titulek}</a></h2>
+<div class="datum_diskuze" >{$clanek->datum_vydani|czTextDate}
+| {$clanek->autor}
+ {if !empty($clanek->komentaru)}| <a href="{link Clanek:default $clanek->id, Nette\Utils\Strings::webalize($clanek['titulek'])}#komentare">{!$clanek->komentaru|komentare}</a>{/if}
+ </div>
+<p>{!$clanek->perex|stripTags|truncate:200}</p>
+</div>
+</div>
+<div class="clear"></div>
+{/foreach}
+{/snippet}
+
+{snippet nacist}
+{if !empty($clanky)}
+<a n:href="default, 'offset' => $next_offset, 'url' => $url, 'stitek' => $stitek, 'search' => $search" class="ajax nacist" >zobrazit dalších {$limit} článků</a>
+{else}
+<p>V kategorii zatím nejsou žádné články.</p>
+{/if}
+{/snippet}
+
+{/block}
+
+
