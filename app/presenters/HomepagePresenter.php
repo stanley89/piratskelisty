@@ -22,6 +22,12 @@ class HomepagePresenter extends BasePresenter
             $this->redirect("Clanek:default",array("id" => $clanek['id'], "nazev"=> Nette\Utils\Strings::webalize($clanek['titulek'])));
         }
         $aktuality = false;
+        if (!is_integer($offset) || $offset<0) {
+            $offset = 0;
+        }
+        if (!is_integer($offset) || $offset<1) {
+            $offset = 10;
+        }
         $offset2 = $offset;
         $limit2 = $limit;
         if ($url=="aktuality") {
