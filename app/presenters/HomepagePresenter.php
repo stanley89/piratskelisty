@@ -25,8 +25,8 @@ class HomepagePresenter extends BasePresenter
         if (!is_integer($offset) || $offset<0) {
             $offset = 0;
         }
-        if (!is_integer($offset) || $offset<1) {
-            $offset = 10;
+        if (!is_integer($limit) || $limit<1) {
+            $limit = 10;
         }
         $offset2 = $offset;
         $limit2 = $limit;
