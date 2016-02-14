@@ -18,15 +18,15 @@ class SignPresenter extends BasePresenter
         $this->uzivatele = $uzivatele;
     }
 
-    private $request;
+    private $httpRequest;
 
-    public function injectRequest(\Nette\Http\Request $request) {
-        $this->request = $request;
+    public function injectRequest(\Nette\Http\Request $httpRequest) {
+        $this->httpRequest = $httpRequest;
     }
 
 
     public function actionPirateId() {
-        $openId = new \LightOpenID($this->request->getUrl()->getAuthority());
+        $openId = new \LightOpenID($this->httpRequest->getUrl()->getAuthority());
         if(!$openId->mode) {
             $openId->identity = "https://openid.pirati.cz";
             $openId->required = array(
@@ -55,7 +55,7 @@ class SignPresenter extends BasePresenter
     }
 
     public function actionMojeId() {
-        $openId = new \LightOpenID($this->request->getUrl()->getAuthority());
+        $openId = new \LightOpenID($this->httpRequest->getUrl()->getAuthority());
         if(!$openId->mode) {
             $openId->identity = "https://mojeid.cz/endpoint/";
             $openId->required = array(
