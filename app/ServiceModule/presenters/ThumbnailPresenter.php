@@ -44,7 +44,7 @@ class ThumbnailPresenter extends \App\Presenters\BasePresenter
 
         try {
             $img = \Nette\Image::fromFile($inputfile);
-        } catch (\Nette\UnknownImageFileException $e) {
+        } catch (\Nette\Utils\UnknownImageFileException $e) {
             throw new \Nette\Application\BadRequestException();
         }
 
