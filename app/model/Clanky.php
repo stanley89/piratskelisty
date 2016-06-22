@@ -7,7 +7,7 @@ use Nette,
 
 
 /**
- * Category management.
+ * Správa článků.
  */
 class Clanky
 {
@@ -45,7 +45,7 @@ class Clanky
         $query1 = "SELECT c.*,cr.perex,cr.text,cr.datum as aktualizovano, k.nazev as kategorie,cr.id as crid,
                                                    ko.komentaru, u.alt, u.title
                                                    FROM clanky c
-                                                   JOIN (SELECT * FROM clanky_revize cr ORDER BY id DESC) cr ON (c.id=cr.clanek_id)
+                                                   JOIN (select * from clanky_revize where id in (SELECT max(id) from clanky_revize group by clanek_id )) cr ON (c.id=cr.clanek_id)
                                                    JOIN kategorie k ON (c.kategorie_id = k.id)
                                                    LEFT JOIN upload u ON (c.obrazek_id = u.id)
                                                    LEFT JOIN (select clanek_id,count(*) as komentaru from komentare group by clanek_id) ko ON (ko.clanek_id=c.id)
@@ -84,7 +84,7 @@ class Clanky
         $clanek = $this->database->fetch("SELECT c.*, cr.perex, cr.text,cr.datum as aktualizovano, k.nazev as kategorie,cr.id as crid,
                                                       ko.komentaru, u.alt, u.title
                                         FROM clanky c
-                                        JOIN (SELECT * FROM clanky_revize cr ORDER BY id DESC) cr ON (c.id=cr.clanek_id)
+                                        JOIN (select * from clanky_revize where id in (SELECT max(id) from clanky_revize group by clanek_id )) cr ON (c.id=cr.clanek_id)
                                         JOIN kategorie k ON (c.kategorie_id = k.id)
                                         LEFT JOIN (select clanek_id,count(*) as komentaru from komentare group by clanek_id) ko ON (ko.clanek_id=c.id)
                                         LEFT JOIN upload u ON (c.obrazek_id = u.id)
