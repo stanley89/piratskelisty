@@ -133,10 +133,15 @@ class Clanky
 
     public function addHodnoceni($id,$hodnoceni,$ip) {
         if (abs($hodnoceni)!=1) return;
+		$this->database->beginTransaction();
         $h = $this->getHodnoceniByIp($id, $ip);
-        if (!empty($h)) return;
-        $arr = array("clanek_id" => $id, "hodnoceni" => $hodnoceni, "ip" => $ip);
-        $this->database->query("INSERT INTO hodnoceni ",$arr);
+        if (empty($h)) {
+			$arr = array("clanek_id" => $id, "hodnoceni" => $hodnoceni, "ip" => $ip);
+			$this->database->query("INSERT INTO hodnoceni ",$arr);
+			$this->database->commit();
+		} else {
+			$this->database->rollBack();
+		}
     }
     public function getHodnoceni($id) {
         return $this->database->fetch("SELECT sum(case when hodnoceni>0 then 1 else 0 end) as plus,
