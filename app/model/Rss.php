@@ -45,6 +45,8 @@ class Rss extends \Nette\Object
 				. " FROM rss_channels;");
 	}
 	public function loadChannels() {
+		$stop = $this->database->fetchField("select max(unix_timestamp(pub_date))>(unix_timestamp(now())-100) from rss_items;");
+		if ($stop) return;
 		$channels = $this->getChannels();
 		foreach ($channels as $channel) {
 			$page = file_get_contents($channel['link']);
