@@ -40,12 +40,6 @@ class ClanekPresenter extends BasePresenter
         return $form;
     }
 
-    public function handleHodnot($hodnoceni)
-    {
-        $this->clanky->addHodnoceni($this->id, $hodnoceni, $_SERVER['REMOTE_ADDR']);
-        $this->redrawControl("hodnoceni");
-    }
-
     public function handleKomentuj()
     {
         $this->template->pridej_komentar = true;

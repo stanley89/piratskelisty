@@ -38,26 +38,6 @@
 <strong>Štítky:</strong> {foreach $clanek->stitky as $stitek}<a n:href="Homepage:default stitek => $stitek">#{$stitek}</a> {/foreach}
 </p>
 {/if}
-{snippet hodnoceni}
-<strong>Hodnocení:</strong>
-<span class="green">+{$hodnoceni['plus']}</span>
-/
-<span class="red">-{$hodnoceni['minus']}</span>
-<br />
-{if (empty($moje_hodnoceni))}
-Ohodnoťte tento článek:
-<a n:href="hodnot! 1" class="ajax green" >+1</a>&nbsp;
-<a n:href="hodnot! -1" class="ajax red" >-1</a>&nbsp;
-{else}
-Moje hodnocení:
-{if $moje_hodnoceni['hodnoceni']>0}
-<span class="green" title="Článek se mi líbí" >+1</span>
-{else}
-<span class="red" title="Článek se mi nelíbí" >-1</span>
-
-{/if}
-{/if}
-{/snippet}
 
 {if !empty($skupina)}
 <h3>Související články</h3>
