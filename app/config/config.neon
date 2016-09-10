@@ -30,6 +30,7 @@ services:
 	- Models\Clanky
 	- Models\Komentare
 	- Models\Upload
+	- Models\Rss
 
 	router: @App\RouterFactory::createRouter
 

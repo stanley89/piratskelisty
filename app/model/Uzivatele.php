@@ -9,7 +9,7 @@ use Nette,
 /**
  * Users management.
  */
-class Uzivatele implements \IUzivatele
+class Uzivatele extends \Nette\Object implements \IUzivatele
 {
     const
         TABLE_NAME = 'uzivatele',

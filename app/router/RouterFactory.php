@@ -28,7 +28,9 @@ class RouterFactory
                     'action' => 'default'));
         $router[] = new Route('art/<id>', "Homepage:stary");
         $router[] = new Route('hledani/<search>', "Homepage:default");
-        $router[] = new Route('rss/<action>', "Rss:default");
+
+		$router[] = new Route('rss/forum/<key>', "Rss:forum");
+		$router[] = new Route('rss/<action>', "Rss:default");
 
         $router[] = new Route('kontakt', "Homepage:kontakt");
         $router[] = new Route('podpora', "Homepage:podpora");

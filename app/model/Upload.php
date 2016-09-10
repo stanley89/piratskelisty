@@ -7,7 +7,8 @@ use Nette,
     Nette\Utils\Strings;
 
 
-class Upload {
+class Upload extends \Nette\Object
+{
     /** @var Nette\Database\Context */
     private $database;
 

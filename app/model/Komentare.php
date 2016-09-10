@@ -9,11 +9,10 @@ use Nette,
 /**
  * Category management.
  */
-class Komentare
+class Komentare extends \Nette\Object
 {
     /** @var Nette\Database\Context */
     private $database;
-
 
     public function __construct(Nette\Database\Context $database)
     {
