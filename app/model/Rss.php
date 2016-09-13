@@ -26,7 +26,9 @@ class Rss extends \Nette\Object
 			return iconv('WINDOWS-1250', 'UTF-8', $s);
 
 		// assume ISO-8859-2
-		return iconv('ISO-8859-2', 'UTF-8', $s);
+		//return iconv('ISO-8859-2', 'UTF-8', $s);
+		// assume binary
+		return null;
 	}
 
     public function __construct(Nette\Database\Context $database)
@@ -57,6 +59,7 @@ class Rss extends \Nette\Object
 				$arr = array('link' => $element->href,
 					'rss_channel_id' => $channel['id']);
 				$clanek = $this->autoUTF(file_get_contents($element->href));
+				if (empty($clanek)) continue;
 				$dom = HtmlDomParser::str_get_html($clanek);
 				if (empty($dom)) continue;
 				$title = $dom->find('title',0);
