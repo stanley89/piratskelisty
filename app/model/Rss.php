@@ -17,13 +17,19 @@ class Rss extends \Nette\Object
 	// convert to UTF-8 by dgx
 	function autoUTF($s)
 	{
-		// detect UTF-8
-		if (preg_match('#[\x80-\x{1FF}\x{2000}-\x{3FFF}]#u', $s))
-			return $s;
 
+		// detect UTF-8
+		if (preg_match('#[\x80-\x{1FF}\x{2000}-\x{3FFF}]#u', $s)) {
+			return $s;
+		}
+		// detect binary
+		if (preg_match('#[\x81\x83\x88\x90\x98]#', $s)) {
+				return null;
+		}
 		// detect WINDOWS-1250
-		if (preg_match('#[\x7F-\x9F\xBC]#', $s))
+		if (preg_match('#[\x7F-\x9F\xBC]#', $s)) {
 			return iconv('WINDOWS-1250', 'UTF-8', $s);
+		}
 
 		// assume ISO-8859-2
 		//return iconv('ISO-8859-2', 'UTF-8', $s);
