@@ -58,6 +58,7 @@ class Rss extends \Nette\Object
 					'rss_channel_id' => $channel['id']);
 				$clanek = $this->autoUTF(file_get_contents($element->href));
 				$dom = HtmlDomParser::str_get_html($clanek);
+				if (empty($dom)) continue;
 				$title = $dom->find('title',0);
 				if (!empty($title)) {
 					$arr['title'] = $title->innertext;
