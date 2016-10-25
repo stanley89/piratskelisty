@@ -57,7 +57,14 @@ class Rss extends \Nette\Object
 		if ($stop) return;
 		$channels = $this->getChannels();
 		foreach ($channels as $channel) {
-			$page = file_get_contents($channel['link']);
+	        $ch = curl_init();
+		    curl_setopt($ch, CURLOPT_URL, $channel['link']);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	        $page = curl_exec($ch);
+		    curl_close($ch);
+			if (empty($page)) {
+				continue;
+			}
 			$html = HtmlDomParser::str_get_html( $page );
 			foreach($html->find('.postbody .content a.postlink') as $element) {
 				$exists = $this->getItemByLinkChannel($element->href, $channel->id);
