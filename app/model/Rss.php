@@ -14,6 +14,59 @@ class Rss extends \Nette\Object
 	/** @var Nette\Database\Context */
     private $database;
 
+
+	/**
+	* @param cURL  $ch                     - uchwyt do cURL
+	* @param int   $redirects              - przekierowania
+	* @param bool  $curlopt_returntransfer - CURLOPT_RETURNTRANSFER
+	* @param int   $curlopt_maxredirs      - CURLOPT_MAXREDIRS
+	* @param bool  $curlopt_header         - CURLOPT_HEADER
+	* @return mixed
+	* @author Paweł Antczak
+	* @url http://antczak.org/2009/12/curl-rozwiazanie-problemu-z-curlopt_followlocation/
+	*/
+	private function curl_redirect_exec($ch, &$redirects, $curlopt_returntransfer = false, $curlopt_maxredirs = 10, $curlopt_header = false) {
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$data = curl_exec($ch);
+		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		$exceeded_max_redirects = $curlopt_maxredirs > $redirects;
+		$exist_more_redirects = false;
+		if ($http_code == 301 || $http_code == 302) {
+			if ($exceeded_max_redirects) {
+				list($header) = explode("\r\n\r\n", $data, 2);
+				$matches = array();
+				preg_match('/(Location:|URI:)(.*?)\n/', $header, $matches);
+				$url = trim(array_pop($matches));
+				$url_parsed = parse_url($url);
+				if (isset($url_parsed)) {
+					curl_setopt($ch, CURLOPT_URL, $url);
+					$redirects++;
+					return $this->curl_redirect_exec($ch, $redirects, $curlopt_returntransfer, $curlopt_maxredirs, $curlopt_header);
+				}
+			}
+			else {
+				$exist_more_redirects = true;
+			}
+		}
+		if ($data !== false) {
+			if (!$curlopt_header)
+				list(,$data) = explode("\r\n\r\n", $data, 2);
+			if ($exist_more_redirects) return false;
+			if ($curlopt_returntransfer) {
+				return $data;
+			}
+			else {
+				echo $data;
+				if (curl_errno($ch) === 0) return true;
+				else return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+
 	// convert to UTF-8 by dgx
 	function autoUTF($s)
 	{
@@ -59,9 +112,8 @@ class Rss extends \Nette\Object
 		foreach ($channels as $channel) {
 	        $ch = curl_init();
 		    curl_setopt($ch, CURLOPT_URL, $channel['link']);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	        $page = curl_exec($ch);
+			$redirects = 0;
+	        $page = $this->curl_redirect_exec($ch, $redirects, true);
 		    curl_close($ch);
 			if (empty($page)) {
 				continue;
