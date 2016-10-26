@@ -59,6 +59,7 @@ class Rss extends \Nette\Object
 		foreach ($channels as $channel) {
 	        $ch = curl_init();
 		    curl_setopt($ch, CURLOPT_URL, $channel['link']);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	        $page = curl_exec($ch);
 		    curl_close($ch);
