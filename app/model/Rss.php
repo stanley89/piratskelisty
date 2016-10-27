@@ -120,12 +120,12 @@ class Rss extends \Nette\Object
 			}
 			$html = HtmlDomParser::str_get_html( $page );
 			foreach($html->find('.postbody .content a.postlink') as $element) {
-				$exists = $this->getItemByLinkChannel($element->href, $channel->id);
-				if (!empty($exists)) continue;
+				//$exists = $this->getItemByLinkChannel($element->href, $channel->id);
+				//if (!empty($exists)) continue;
 				$arr = array('link' => $element->href,
 					'rss_channel_id' => $channel['id']);
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $channel['link']);
+				curl_setopt($ch, CURLOPT_URL, $element->href);
 				$redirects = 0;
 				$data = $this->curl_redirect_exec($ch, $redirects, true);
 				curl_close($ch);
