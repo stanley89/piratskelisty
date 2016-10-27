@@ -124,7 +124,12 @@ class Rss extends \Nette\Object
 				if (!empty($exists)) continue;
 				$arr = array('link' => $element->href,
 					'rss_channel_id' => $channel['id']);
-				$clanek = $this->autoUTF(file_get_contents($element->href));
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $channel['link']);
+				$redirects = 0;
+				$data = $this->curl_redirect_exec($ch, $redirects, true);
+				curl_close($ch);
+				$clanek = $this->autoUTF($data);
 				if (empty($clanek)) continue;
 				$dom = HtmlDomParser::str_get_html($clanek);
 				if (empty($dom)) continue;
