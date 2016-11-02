@@ -2,6 +2,8 @@
 
 namespace App\RedakceModule\Presenters;
 
+use \Nette\Application\UI\Form;
+
 class UploadPresenter extends BasePresenter
 {
     /** @var Models/Upload */
@@ -23,8 +25,9 @@ class UploadPresenter extends BasePresenter
 
     public function createComponentUpload()
     {
-        $form = new \Nette\Application\UI\Form;
-        $form->addUpload('foto', 'Fotografie:');
+        $form = new Form;
+        $form->addUpload('foto', 'Fotografie (max. 2 MB):')
+				    ->addRule(Form::MAX_FILE_SIZE, 'Maximální velikost souboru je 2 MB.', 2 * 1024 * 1024 /* v bytech */);
 
         $form->addTextarea("alt", "Popis");
         $form->addTextarea("title", "Titulek");
