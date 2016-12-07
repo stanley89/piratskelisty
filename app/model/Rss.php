@@ -105,9 +105,26 @@ class Rss extends \Nette\Object
 		return $this->database->fetchAll("SELECT *"
 				. " FROM rss_channels;");
 	}
+
+	public function getLobChannels() {
+		return $this->database->fetchAll("SELECT *"
+				. " FROM lob_channels;");
+	}
+	public function getLobItemByPostId($id) {
+		return $this->database->fetch("SELECT * FROM lob_items where post_id=?;",$id);
+	}
+	public function getLobs($limit, $offset) {
+        return $this->database->fetchAll("SELECT *
+                    FROM lob_items
+                    ORDER BY post_id DESC
+                    LIMIT ? OFFSET ?;",$limit, $offset);
+
+	}
 	public function loadChannels() {
 		$stop = $this->database->fetchField("select max(unix_timestamp(pub_date))>(unix_timestamp(now())-100) from rss_items;");
-		if ($stop) return;
+		if ($stop) {
+			return;
+		}
 		$channels = $this->getChannels();
 		foreach ($channels as $channel) {
 	        $ch = curl_init();
@@ -145,6 +162,44 @@ class Rss extends \Nette\Object
 				}
 
 				$this->database->query('insert into rss_items ',$arr);
+			}
+		}
+	}
+	public function loadLob() {
+		$stop = $this->database->fetchField("select max(unix_timestamp(published))>(unix_timestamp(now())-100) from lob_items;");
+		if ($stop) {
+			return;
+		}
+		$channels = $this->getLobChannels();
+		foreach ($channels as $channel) {
+	        $ch = curl_init();
+		    curl_setopt($ch, CURLOPT_URL, $channel['link']);
+			$redirects = 0;
+	        $page = $this->curl_redirect_exec($ch, $redirects, true);
+		    curl_close($ch);
+			if (empty($page)) {
+				continue;
+			}
+			$html = HtmlDomParser::str_get_html( $page );
+			foreach($html->find('#page-body .post') as $element) {
+				if (isset($element->id)) {
+					$id = preg_replace("/[^0-9,.]/", "", $element->id);
+				} else {
+					continue;
+				}
+				$lobItem = $this->getLobItemByPostId($id);
+				if (!empty($lobItem)) {
+					continue;
+				}
+				$arr = array();
+				$content = $element->find('.content',0);
+				$author = $element->find('.postprofile dt',0);
+				$datestring = $element->find('.author',0);
+				$arr['content'] = trim($content->innertext);
+				$arr['author'] = trim($author->plaintext);
+				$arr['datestring'] = trim(preg_replace("/.*&raquo;/", "", $datestring->innertext));
+				$arr['post_id'] = $id;
+				$this->database->query('insert into lob_items ',$arr);
 			}
 		}
 	}

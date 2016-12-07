@@ -24,5 +24,8 @@ class CronPresenter extends BasePresenter
 		$this->rss->loadChannels();
 		$this->terminate();
 	}
-
+	public function actionLob() {
+		$this->rss->loadLob();
+		$this->terminate();
+	}
 }

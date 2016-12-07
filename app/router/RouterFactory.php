@@ -38,6 +38,7 @@ class RouterFactory
         $router[] = new Route('kategorie/<url>', "Homepage:default");
         $router[] = new Route('stitek/<stitek>', "Homepage:default");
         $router[] = new Route('clanek-<id>-<nazev>', "Clanek:default");
+        $router[] = new Route('evidence-lobbistickych-kontaktu', "Lob:default");
 
         $router[] = new Route('sprava/<presenter>/<action>[/<id>]',
             array("module" => "Redakce",
