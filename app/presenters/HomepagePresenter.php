@@ -59,7 +59,7 @@ class HomepagePresenter extends BasePresenter
         $this->template->stitek = $stitek;
         $this->template->search = $search;
         $this->redrawControl("clanky");
-        $this->redrawControl("nacist");
+        $this->redrawControl("dalsi");
 
     }
 
